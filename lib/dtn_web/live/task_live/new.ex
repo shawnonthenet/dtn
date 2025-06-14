@@ -1,0 +1,45 @@
+defmodule DtnWeb.TaskLive.New do
+  use DtnWeb, :live_view
+
+  def mount(_params, _session, socket) do
+    form = Dtn.Tasks.form_to_create_task() |> to_form()
+    {:ok, assign(socket, form: form)}
+  end
+
+  def render(assigns) do
+    ~H"""
+    <div>
+      <h1>New Task</h1>
+      <.form for={@form} phx-change="validate" phx-submit="save">
+        <.input field={@form[:type]} type="select" options={[{"Chore", "chore"}, {"Exercise", "exercise"}, {"Task", "task"}]} label="Type" />
+        <.input field={@form[:title]} label="Title" />
+        <.input field={@form[:message]} label="Message" />
+        <.input field={@form[:days]} label="Days" />
+        <.button>Create</.button>
+      </.form>
+    </div>
+    """
+  end
+
+  def handle_event("validate", %{"form" => form_data}, socket) do
+    socket =
+      update(socket, :form, fn form ->
+        AshPhoenix.Form.validate(form, form_data)
+      end)
+
+    {:noreply, socket}
+  end
+
+  def handle_event("save", %{"form" => form_data}, socket) do
+    case AshPhoenix.Form.submit(socket.assigns.form, params: form_data) do
+      {:ok, task} ->
+        {:noreply,
+         socket
+         |> put_flash(:info, "Task created successfully")
+         |> push_navigate(to: ~p"/tasks")}
+
+      {:error, form} ->
+        {:noreply, socket |> assign(:form, form)}
+    end
+  end
+end
