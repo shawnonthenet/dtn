@@ -2,6 +2,7 @@ defmodule Dtn.Tasks.Printer do
   use Oban.Worker, queue: :default, max_attempts: 1
 
   alias Escpos.Printer
+  alias Escpos.Commands
 
   @impl Oban.Worker
   def perform(_job) do
@@ -25,10 +26,10 @@ defmodule Dtn.Tasks.Printer do
   def print(printer, task) do
     Escpos.write_image_file(printer, "priv/static/images/#{task.type}.png")
 
-    Escpos.write(printer, Escpos.Commands.TextFormat.txt_4square())
+    Escpos.write(printer, Commands.TextFormat.txt_4square())
     Escpos.write(printer, "\n#{task.title}\n\n")
-    Escpos.write(printer, Escpos.Commands.TextFormat.txt_normal())
+    Escpos.write(printer, Commands.TextFormat.txt_normal())
     Escpos.write(printer, "\n#{task.message}\n\n")
-    Escpos.write(printer, Escpos.Commands.Paper.full_cut())
+    Escpos.write(printer, Commands.Paper.full_cut())
   end
 end
