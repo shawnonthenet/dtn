@@ -15,7 +15,8 @@ config :dtn, Oban,
   queues: [default: 10],
   repo: Dtn.Repo,
   plugins: [{Oban.Plugins.Cron, crontab: [
-    {"0 3 * * *", Dtn.Tasks.Printer}
+    {"0 3 * * *", Dtn.Tasks.Printer, args: %{"block" => "am"}},
+    {"0 12 * * *", Dtn.Tasks.Printer, args: %{"block" => "pm"}}
   ], timezone: "Australia/Sydney"}]
 
 config :ash,
