@@ -7,7 +7,7 @@ defmodule Dtn.Tasks.Printer do
   @impl Oban.Worker
   def perform(%Oban.Job{args: %{"block" => block}}) do
     dow = DateTime.utc_now |> DateTime.shift_zone!("Australia/Sydney") |> DateTime.to_date() |> Date.day_of_week()
-    print_tasks(dow, block)
+    print_tasks("#{dow}", block)
   end
 
   def print_tasks(dow, block) do
