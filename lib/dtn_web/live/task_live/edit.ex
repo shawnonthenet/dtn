@@ -1,8 +1,9 @@
-defmodule DtnWeb.TaskLive.New do
+defmodule DtnWeb.TaskLive.Edit do
   use DtnWeb, :live_view
 
-  def mount(_params, _session, socket) do
-    form = Dtn.Tasks.form_to_create_task() |> to_form()
+  def mount(%{"id" => id}, _session, socket) do
+    task = Dtn.Tasks.get_task!(id)
+    form = Dtn.Tasks.form_to_update_task(task) |> to_form()
     {:ok, assign(socket, form: form)}
   end
 
@@ -36,7 +37,7 @@ defmodule DtnWeb.TaskLive.New do
       {:ok, task} ->
         {:noreply,
          socket
-         |> put_flash(:info, "Task created successfully")
+         |> put_flash(:info, "Task updated successfully")
          |> push_navigate(to: ~p"/tasks")}
 
       {:error, form} ->

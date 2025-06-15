@@ -39,7 +39,7 @@ defmodule DtnWeb.Router do
 
       live "/tasks", TaskLive.Index
       live "/tasks/new", TaskLive.New
-      live "/tasks/:id", TaskLive.Edit
+      live "/tasks/:id/edit", TaskLive.Edit
     end
   end
 
