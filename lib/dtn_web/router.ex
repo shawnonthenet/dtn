@@ -22,6 +22,12 @@ defmodule DtnWeb.Router do
     plug :set_actor, :user
   end
 
+  scope "/api", DtnWeb do
+    pipe_through :api
+
+    post "/tasks", ApiController, :create_task
+  end
+
   scope "/", DtnWeb do
     pipe_through :browser
 
@@ -47,7 +53,6 @@ defmodule DtnWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
-    post "/api/tasks", ApiController, :create_task
     auth_routes AuthController, Dtn.Accounts.User, path: "/auth"
     sign_out_route AuthController
 
