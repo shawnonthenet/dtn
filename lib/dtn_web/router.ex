@@ -47,6 +47,7 @@ defmodule DtnWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    post "/api/tasks", ApiController, :create_task
     auth_routes AuthController, Dtn.Accounts.User, path: "/auth"
     sign_out_route AuthController
 
