@@ -1,5 +1,5 @@
 defmodule Dtn.Tasks.MailGetter do
-  use Oban.Worker, queue: :mail_getter, max_attempts: 3
+  use Oban.Worker, queue: :default, max_attempts: 3
 
   alias Escpos.Printer
 
