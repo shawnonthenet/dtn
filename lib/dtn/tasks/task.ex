@@ -11,7 +11,7 @@ defmodule Dtn.Tasks.Task do
 
     create :create do
       primary? true
-      accept [:type, :block, :title, :message, :days]
+      accept [:type, :block, :title, :message, :days, :printed]
     end
 
     update :update do
