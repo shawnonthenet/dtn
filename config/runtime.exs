@@ -122,3 +122,8 @@ if config_env() == :prod do
   #
   # See https://hexdocs.pm/swoosh/Swoosh.html#module-installation for details.
 end
+
+config :dtn, :mail_getter,
+  pop3_host: System.get_env("POP3_HOST"),
+  pop3_username: System.get_env("POP3_USERNAME"),
+  pop3_password: System.get_env("POP3_PASSWORD")

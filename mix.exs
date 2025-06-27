@@ -72,7 +72,9 @@ defmodule Dtn.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
       {:tz, "~> 0.28"},
-      {:escpos, "~> 0.1.0", github: "shawnonthenet/escpos"}
+      {:escpos, "~> 0.1.0", github: "shawnonthenet/escpos"},
+      {:mailroom, "~> 0.6.0"},
+      {:mail, "~> 0.4"},
     ]
   end
 

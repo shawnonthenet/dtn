@@ -12,7 +12,7 @@ defmodule DtnWeb.TaskLive.Index do
 
   def render(assigns) do
     ~H"""
-            <.link href={~p"/tasks/new"} class="btn btn-primary">New</.link>
+    <.link href={~p"/tasks/new"} class="btn btn-primary">New</.link>
     <div>
       <h1>Tasks</h1>
       <table class="table">
@@ -26,17 +26,17 @@ defmodule DtnWeb.TaskLive.Index do
           </tr>
         </thead>
         <%= for task <- @tasks["task"] do %>
-        <%= if task.printed == false do %>
-          <tr>
-            <td><%= task.title %></td>
-            <td><%= task.message %></td>
-            <td><%= task.days %></td>
-            <td><%= task.block %></td>
-            <td>
-              <.link href={~p"/tasks/#{task.id}/edit"} class="btn btn-primary">Edit</.link>
-              <.link href={~p"/tasks/#{task.id}/delete"} class="btn btn-danger">Delete</.link>
-            </td>
-          </tr>
+          <%= if task.printed == false do %>
+            <tr>
+              <td>{task.title}</td>
+              <td>{task.message}</td>
+              <td>{task.days}</td>
+              <td>{task.block}</td>
+              <td>
+                <.link href={~p"/tasks/#{task.id}/edit"} class="btn btn-primary">Edit</.link>
+                <.link href={~p"/tasks/#{task.id}/delete"} class="btn btn-danger">Delete</.link>
+              </td>
+            </tr>
           <% end %>
         <% end %>
       </table>
@@ -53,10 +53,10 @@ defmodule DtnWeb.TaskLive.Index do
         </thead>
         <%= for task <- @tasks["exercise"] do %>
           <tr>
-            <td><%= task.title %></td>
-            <td><%= task.message %></td>
-            <td><%= task.days %></td>
-            <td><%= task.block %></td>
+            <td>{task.title}</td>
+            <td>{task.message}</td>
+            <td>{task.days}</td>
+            <td>{task.block}</td>
             <td>
               <.link href={~p"/tasks/#{task.id}/edit"} class="btn btn-primary">Edit</.link>
               <.link href={~p"/tasks/#{task.id}/delete"} class="btn btn-danger">Delete</.link>
@@ -77,10 +77,10 @@ defmodule DtnWeb.TaskLive.Index do
         </thead>
         <%= for task <- @tasks["chore"] do %>
           <tr>
-            <td><%= task.title %></td>
-            <td><%= task.message %></td>
-            <td><%= task.days %></td>
-            <td><%= task.block %></td>
+            <td>{task.title}</td>
+            <td>{task.message}</td>
+            <td>{task.days}</td>
+            <td>{task.block}</td>
             <td>
               <.link href={~p"/tasks/#{task.id}/edit"} class="btn btn-primary">Edit</.link>
               <.link href={~p"/tasks/#{task.id}/delete"} class="btn btn-danger">Delete</.link>
@@ -100,17 +100,17 @@ defmodule DtnWeb.TaskLive.Index do
           </tr>
         </thead>
         <%= for task <- @tasks["task"] do %>
-        <%= if task.printed == true do %>
-          <tr>
-            <td><%= task.title %></td>
-            <td><%= task.message %></td>
-            <td><%= task.days %></td>
-            <td><%= task.block %></td>
-            <td>
-              <.link href={~p"/tasks/#{task.id}/edit"} class="btn btn-primary">Edit</.link>
-              <.link href={~p"/tasks/#{task.id}/delete"} class="btn btn-danger">Delete</.link>
-            </td>
-          </tr>
+          <%= if task.printed == true do %>
+            <tr>
+              <td>{task.title}</td>
+              <td>{task.message}</td>
+              <td>{task.days}</td>
+              <td>{task.block}</td>
+              <td>
+                <.link href={~p"/tasks/#{task.id}/edit"} class="btn btn-primary">Edit</.link>
+                <.link href={~p"/tasks/#{task.id}/delete"} class="btn btn-danger">Delete</.link>
+              </td>
+            </tr>
           <% end %>
         <% end %>
       </table>

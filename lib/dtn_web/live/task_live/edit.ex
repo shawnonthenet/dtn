@@ -12,8 +12,18 @@ defmodule DtnWeb.TaskLive.Edit do
     <div>
       <h1>New Task</h1>
       <.form for={@form} phx-change="validate" phx-submit="save">
-        <.input field={@form[:type]} type="select" options={[{"Chore", "chore"}, {"Exercise", "exercise"}, {"Task", "task"}]} label="Type" />
-        <.input field={@form[:block]} type="select" options={[{"AM", "am"}, {"PM", "pm"}]} label="Block" />
+        <.input
+          field={@form[:type]}
+          type="select"
+          options={[{"Chore", "chore"}, {"Exercise", "exercise"}, {"Task", "task"}]}
+          label="Type"
+        />
+        <.input
+          field={@form[:block]}
+          type="select"
+          options={[{"AM", "am"}, {"PM", "pm"}]}
+          label="Block"
+        />
         <.input field={@form[:title]} label="Title" />
         <.input field={@form[:message]} label="Message" />
         <.input field={@form[:days]} label="Days" />
