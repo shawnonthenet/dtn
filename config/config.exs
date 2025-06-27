@@ -18,7 +18,8 @@ config :dtn, Oban,
     {Oban.Plugins.Cron,
      crontab: [
        {"0 3 * * *", Dtn.Tasks.Printer, args: %{"block" => "am"}},
-       {"0 12 * * *", Dtn.Tasks.Printer, args: %{"block" => "pm"}}
+       {"0 12 * * *", Dtn.Tasks.Printer, args: %{"block" => "pm"}},
+       {"* * * * *", Dtn.Tasks.MailGetter}
      ],
      timezone: "Australia/Sydney"}
   ]
